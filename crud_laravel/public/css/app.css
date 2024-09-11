@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('animate.css');
+@import url('icomoon.css');
+@import url('bootstrap.css');
+@import url('flexslider.css');
+@import url('style.css');

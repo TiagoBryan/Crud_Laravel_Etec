@@ -35,7 +35,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->save();
 
-        return redirect()->route('products.index');
+        return redirect()->route('products');
     }
 
     /**
@@ -60,7 +60,7 @@ class ProductController extends Controller
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
-    {
+{
         $request->validate([
             'name' => 'required|string|max:255',
             'description' => 'required|string',
