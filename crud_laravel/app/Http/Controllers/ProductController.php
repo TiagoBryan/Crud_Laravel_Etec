@@ -59,7 +59,7 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
 {
         $request->validate([
             'name' => 'required|string|max:255',
@@ -71,9 +71,13 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = $request->price;
-        $product->save(); 
+        $product->update([
+            "name" => $product->name,
+            "description" => $product->description,
+            "price" => $product->price,
+        ]);
 
-        return redirect()->route('products.index')->with('success', 'Produto atualizado com sucesso!');
+        return redirect()->route('products')->with('success', 'Produto atualizado com sucesso!');
     }
 
     /**
@@ -84,6 +88,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id); 
         $product->delete(); 
 
-        return redirect()->route('products.index')->with('success', 'Produto excluído com sucesso!');
+        return redirect()->route('products')->with('success', 'Produto excluído com sucesso!');
     }
 }
